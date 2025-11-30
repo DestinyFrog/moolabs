@@ -6,3 +6,80 @@
 .icon * {
     stroke: white;
 }
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1400px;
+    padding: 0 20px;
+}
+
+.card-image {
+    border-radius: 1rem;
+    border: 2px solid whitesmoke;
+}
+
+#dialog-produto article main {
+    display: flex;
+    flex-direction: row;
+}
+
+#dialog-produto article main aside {
+    margin-right: 14px;
+    overflow: hidden;
+    border-radius: 1rem;
+    border: 2px solid whitesmoke;
+}
+
+details ul {
+    position: absolute;
+}
+
+button a {
+    color: white;
+    text-decoration: none;
+}
+
+.centered {
+    text-align: center;
+}
+
+.usuario-imagem {
+    width: 100px;
+    border-radius: 100%;
+    border: 2px solid whitesmoke;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+}
+
+.header nav {
+    width: 60%;
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .header nav ul {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+        padding: 0;
+    }
+
+    .header nav {
+        width: 100%;
+    }
+
+    .header nav ul li {
+        text-align: center;
+    }
+}

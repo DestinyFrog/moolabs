@@ -1,40 +1,16 @@
-<?php
-include "./lib/database.php";
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $nome = $_POST["nome"];
-    $email = $_POST["email"];
-    $senha = $_POST["senha"];
-
-    try {
-        $conn = get_conn();
-        $stmt = $conn->prepare("INSERT INTO usuario (usuario, email, senha) VALUES(?, ?, ?)");
-        $stmt->bindParam(1, $nome);
-        $stmt->bindParam(2, $email);
-        $stmt->bindParam(2, $senha);
-        $stmt->execute();
-
-        header("Location: /login.php", true, 201);
-        exit;
-    }
-    catch (\Exception $err) {
-
-    }
-} 
-?>
-
 <?php include "./includes/head.php"; ?>
 
 <main>
     <article style="margin-top: 60px;">
-        <form method="post" action="/cadastro.php">
+        <form method="post" action="/crud/cria_usuario.php" enctype="multipart/form-data">
             <fieldset>
                 <label>
                     Nome
                     <input
-                        type="nome"
+                        type="text"
                         name="nome"
-                        placeholder="Nome"
+                        placeholder="Seu nome completo"
+                        required
                     />
                 </label>
 
@@ -44,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         type="email"
                         name="email"
                         placeholder="email@email.com"
-                        autocomplete="given-name"
+                        required
                     />
                 </label>
 
@@ -54,15 +30,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         type="password"
                         name="senha"
                         placeholder="******"
-                        autocomplete="senha"
+                        required
+                        minlength="6"
+                    />
+                </label>
+
+                <label>
+                    Foto de perfil (opcional)
+                    <input
+                        type="file"
+                        name="imagem"
+                        accept="image/*"
                     />
                 </label>
             </fieldset>
         
             <input
                 type="submit"
-                value="Login"
+                value="Cadastrar"
             />
+
+            <p style="text-align: center; margin-top: 1rem;">
+                Já tem uma conta? <a href="/login.php">Faça login</a>
+            </p>
         </form>
     </article>
 </main>

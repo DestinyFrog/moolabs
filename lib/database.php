@@ -1,12 +1,18 @@
 <?php
 
 function get_conn() {
-    $host = "localhost";
-    $porta = 3301;
-    $usuario = "moolabs";
-    $bd = "moolabs";
-    $senha = "senha";
+    $host = '127.0.0.1';
+    $username =  'moolabs';
+    $password =  'senha';
+    $db = 'moolabs';
+    $port =  3306;
 
-    $con = new PDO("mysql:host=$host:$porta;dbname=$bd", $usuario, $senha);
-    return $con;
+    $url = "mysql:host=$host:$port;dbname=$db";
+    $pdo = new PDO($url, $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $pdo->exec("SET NAMES 'utf8mb4'");
+    $pdo->exec("SET CHARACTER SET utf8mb4");
+    
+    return $pdo;
 }

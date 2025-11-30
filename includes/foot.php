@@ -1,5 +1,5 @@
 
-<script src="/scripts/minimal_theme_switcher.js"></script>
+<script src="/scripts/script.js"></script>
 
 </body>
 </html>
